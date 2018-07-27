@@ -15,8 +15,9 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(OGRE OGRE)
 
 # Qt Stuff
-find_package(Qt4 REQUIRED)
-include(${QT_USE_FILE})
+find_package(Qt5Widgets)
+find_package(Qt5Gui)
+#include(${QT_USE_FILE})
 add_definitions(-DQT_NO_KEYWORDS)
 
 
@@ -55,7 +56,7 @@ set( headers
 )
 
 # Convert the Qt Signals and Slots for QWidget events
-qt4_wrap_cpp(MOC_SOURCES ${headers})
+qt5_wrap_cpp(MOC_SOURCES ${headers})
 
 # Plugin Source
 set(SOURCE_FILES
@@ -64,8 +65,8 @@ set(SOURCE_FILES
 
 add_library(interaction_cursor_rviz ${SOURCE_FILES} ${MOC_SOURCES})
 add_dependencies(interaction_cursor_rviz interaction_cursor_msgs_gencpp)
-target_link_libraries(interaction_cursor_rviz ${catkin_LIBRARIES} ${OGRE_LIBRARIES} ${QT_LIBRARIES} ${Boost_LIBRARIES})
-
+target_link_libraries(interaction_cursor_rviz ${catkin_LIBRARIES} ${OGRE_LIBRARIES} ${Boost_LIBRARIES})
+qt5_use_modules(interaction_cursor_rviz Widgets)
 
 #############
 ## Install ##
