@@ -17,8 +17,7 @@ Panels:
     Name: Tool Properties
     Splitter Ratio: 0.588679016
   - Class: rviz/Views
-    Expanded:
-      - /Current View1
+    Expanded: ~
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz/Time
@@ -104,18 +103,26 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz_fixed_view_controller/Fixed
+      Class: rviz/Orbit
+      Distance: 10
       Enable Stereo Rendering:
-        Stereo Eye Separation: 0.06
+        Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Name: InteractionDemo
-      Near Clip Distance: 0.01
-      Target Frame: user1_camera
-      Value: Fixed (rviz_fixed_view_controller)
-      Vertical Field Of View: 50
-      View Mode: X-forward, Z-up
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.0500000007
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Pitch: 0.785398006
+      Target Frame: base_link
+      Value: Orbit (rviz)
+      Yaw: 0.785398006
     Saved:
       - Class: rviz/Orbit
         Distance: 10

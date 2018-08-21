@@ -4,10 +4,10 @@
   <arg name="start_hydra" default="true" />
   <arg name="device" default="hydra" />
   <arg name="radius" default="2.0" />
-
+  <!--
   <include if="$(arg start_hydra)" file="$(find razer_hydra)/launch/hydra.launch" >
   </include>
-
+  -->
   <node name="interaction_cursor_demo_node"
         pkg="interaction_cursor_demo"
         type="interaction_cursor_demo_node"
