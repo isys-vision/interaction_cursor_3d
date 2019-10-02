@@ -1,5 +1,9 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.1.0)
 project(interaction_cursor_rviz)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -15,9 +19,11 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(OGRE OGRE)
 
 # Qt Stuff
-find_package(Qt4 REQUIRED)
-include(${QT_USE_FILE})
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
 add_definitions(-DQT_NO_KEYWORDS)
+
+
+set(CMAKE_AUTOMOC ON)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -45,7 +51,6 @@ catkin_package(
 include_directories(include
                     ${catkin_INCLUDE_DIRS}
                     ${Boost_INCLUDE_DIRS}
-                    ${QT_INCLUDE_DIR}
                     ${OGRE_INCLUDE_DIRS}
                     )
 
@@ -54,17 +59,15 @@ set( headers
   include/interaction_cursor_rviz/interaction_cursor.h
 )
 
-# Convert the Qt Signals and Slots for QWidget events
-qt4_wrap_cpp(MOC_SOURCES ${headers})
 
 # Plugin Source
 set(SOURCE_FILES
   src/interaction_cursor.cpp
 )
 
-add_library(interaction_cursor_rviz ${SOURCE_FILES} ${MOC_SOURCES})
+add_library(interaction_cursor_rviz ${SOURCE_FILES})
 add_dependencies(interaction_cursor_rviz interaction_cursor_msgs_gencpp)
-target_link_libraries(interaction_cursor_rviz ${catkin_LIBRARIES} ${OGRE_LIBRARIES} ${QT_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(interaction_cursor_rviz ${catkin_LIBRARIES} ${OGRE_LIBRARIES} Qt5::Widgets ${Boost_LIBRARIES})
 
 
 #############
