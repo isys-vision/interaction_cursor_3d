@@ -65,7 +65,7 @@ set(SOURCE_FILES
   src/interaction_cursor.cpp
 )
 
-add_library(interaction_cursor_rviz ${SOURCE_FILES})
+add_library(interaction_cursor_rviz ${SOURCE_FILES} ${headers})
 target_link_libraries(interaction_cursor_rviz ${catkin_LIBRARIES} ${OGRE_LIBRARIES} Qt5::Widgets ${Boost_LIBRARIES})
 
 
